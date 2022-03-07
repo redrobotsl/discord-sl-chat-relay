@@ -76,10 +76,6 @@ const init = async () => {
 
 }).then(async ()  => {
 
-  const RPGroup = new client.container.nmv.UUID(config.roleplayUUID);
-  // Start a group chat session - equivalent to opening a group chat but not sending a message
- client.container.SLbot.clientCommands.comms.startGroupChatSession(RPGroup, 'I am Robot. Now online. ');
- logger.log(`SL: Initating Roleplay Group Chat Session.`, "log");
  //client.container.SLbot.clientEvents.onGroupChat.subscribe(groupChatEventFile.bind(client));
 
  client.container.SLbot.clientEvents.onGroupChat.subscribe((eventInfo) => {
