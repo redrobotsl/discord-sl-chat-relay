@@ -22,7 +22,7 @@ module.exports = async (client, GroupChatEvent) => {
 	//   console.log(SLbot);
 	//  console.log(client.container);
 	/// TODO: Dynamically change the current bot name. 
-	if (GroupChatEvent.from === SLbot.agentID) return;
+	if (GroupChatEvent.fromName === "fhdiscordrelay Resident") return;
 	const id = new nmv.UUID(GroupChatEvent.from);
 	let img = "10991f3b-980e-88d8-867a-b2670da85701"; // Default to Fox Hollow Logo
 	let profile;

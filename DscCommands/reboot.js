@@ -1,9 +1,7 @@
 const config = require("../config.js");
 const logger = require("../modules/Logger.js");
-const { settings } = require("../modules/settings.js");
 exports.run = async (client, message, args, level) => { // eslint-disable-line no-unused-vars
-  const replying = settings.ensure(message.guild.id, config.defaultSettings).commandReply;
-  await message.reply({ content: "Bot initiating logout and shutdown", allowedMentions: { repliedUser: (replying === "true") }});
+  await message.reply({ content: "Bot initiating logout and shutdown", allowedMentions: { repliedUser: true }});
   await Promise.all(client.container.commands.map(cmd => {
     // the path is relative to the *current folder*, so just ./filename.js
     delete require.cache[require.resolve(`./${cmd.help.name}.js`)];

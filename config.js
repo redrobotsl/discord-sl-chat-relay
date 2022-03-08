@@ -14,8 +14,9 @@ const config = {
    relays: new Map([
     ["6948be72-bed2-8e8a-cb68-ae7104b73b75", "950236448156692530"], // Fox Hollow
     ["650509ad-7e70-0ec7-ed2a-39545ab9ab87", "950414366308708423"], // Fox Hollow Roleplay
-    ["18f2cf1d-7b12-f8ff-9b54-9f3123f4c784", "950415377995812974"],  // Foxwood Academy
-    ["7e3b3cba-c9bd-b389-b9a7-a4058ba8b9ea", "949477291501703219"] // JF I
+    ["18f2cf1d-7b12-f8ff-9b54-9f3123f4c784", "950525543370067998"],  // Foxwood Academy
+    ["7e3b3cba-c9bd-b389-b9a7-a4058ba8b9ea", "949477291501703219"], // JF I
+    ["7a998f53-2f6a-144b-e7bb-42aa29be3a5a", "950525975106568232"]// Foxwood Academy PTO
   ]),
 
   
