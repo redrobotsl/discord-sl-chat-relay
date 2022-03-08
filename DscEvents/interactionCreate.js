@@ -1,5 +1,5 @@
 const logger = require("../modules/Logger.js");
-const { getSettings, permlevel } = require("../modules/functions.js");
+const { permlevel } = require("../modules/functions.js");
 const config = require("../config.js");
 
 module.exports = async (client, interaction) => {
@@ -8,7 +8,7 @@ module.exports = async (client, interaction) => {
 
   // Grab the settings for this server from Enmap.
   // If there is no guild, get default conf (DMs)
-  const settings = interaction.settings = getSettings(interaction.guild);
+  const settings = config.defaultSettings;
 
   // Get the user or member's permission level from the elevation
   const level = permlevel(interaction);

@@ -1,5 +1,5 @@
 const logger = require("../modules/Logger.js");
-const { getSettings, permlevel } = require("../modules/functions.js");
+const {  permlevel } = require("../modules/functions.js");
 const config = require("../config.js");
 const nmv = require('@caspertech/node-metaverse');
 
@@ -18,7 +18,7 @@ module.exports = async (client, message) => {
 
   // Grab the settings for this server from Enmap.
   // If there is no guild, get default conf (DMs)
-  const settings = message.settings = getSettings(message.guild);
+  const settings = config.defaultSettings;
 
   // Checks if the bot was mentioned via regex, with no message after it,
   // returns the prefix. The reason why we used regex here instead of
