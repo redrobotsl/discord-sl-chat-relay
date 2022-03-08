@@ -1,6 +1,4 @@
-const {
-	getSettings,
-	permlevel
+const { permlevel
 } = require("../modules/functions.js");
 const config = require("../config.js");
 const axios = require('axios')
