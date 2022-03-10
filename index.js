@@ -20,7 +20,6 @@ const client = new Client({ intents, partials });
 
 // Aliases, commands and slash commands are put in collections where they can be
 // read from, catalogued, listed, etc.
-const commands = new Collection();
 const aliases = new Collection();
 const slashcmds = new Collection();
 
@@ -46,7 +45,6 @@ for (let i = 0; i < permLevels.length; i++) {
 // To reduce client pollution we'll create a single container property
 // that we can attach everything we need to.
 client.container = {
-  commands,
   aliases,
   slashcmds,
   levelCache,
@@ -97,19 +95,6 @@ const init = async () => {
 
 
 
-
-
- // Here we load **commands** into memory, as a collection, so they're accessible
-  // here and everywhere else.
-  const commands = readdirSync("./DscCommands/").filter(file => file.endsWith(".js"));
-  for (const file of commands) {
-    const props = require(`./DscCommands/${file}`);
-    logger.log(`Loading Discord Command: ${props.help.name}. 👌`, "log");
-    client.container.commands.set(props.help.name, props);
-    props.conf.aliases.forEach(alias => {
-      client.container.aliases.set(alias, props.help.name);
-    });
-  }
 
   // Now we load any **slash** commands you may have in the ./slash directory.
   const slashFiles = readdirSync("./DscSlash").filter(file => file.endsWith(".js"));

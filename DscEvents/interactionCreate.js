@@ -29,7 +29,7 @@ module.exports = async (client, interaction) => {
       // This will basically set the ephemeral response to either announce
       // to everyone, or just the command executioner. But we **HAVE** to 
       // respond.
-      ephemeral: settings.systemNotice !== "true"
+      ephemeral: "true"
     });
   }
 

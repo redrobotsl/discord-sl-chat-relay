@@ -24,15 +24,13 @@ cp config.js.example config.js
 ## Todo
 - Add Region Restart Evasion with Fallback Regions in the Config File
 - Cleanup Code and add sufficient comments. 
-- Convert any Commands we need to slash commands and remove the rest, we don't need the standard commands included with Guidebot anymore, nor really want them. 
-- Reload Capability of SL Event Files, similar to the Discord Ones, this will be also included into the Red Robot SL/Discord Bot Framework. 
-
+- Add Reload Capability of SL and Discord Commands/Event files. 
 
 
 
 ## License
 
-[MIT](http://vjpr.mit-license.org)
+Licensed under the MIT License.
 
 ## Credits
 

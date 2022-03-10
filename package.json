@@ -1,6 +1,6 @@
 {
   "name": "sl-discord-bot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A SL and Discord Bot in One, capable of handling commands and events from both. ",
   "main": "index.js",
   "scripts": {

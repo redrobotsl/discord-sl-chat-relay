@@ -19,8 +19,8 @@ module.exports = async (client, GroupChatEvent) => {
 	// console.log('Group chat: ' + GroupChatEvent.fromName + ': ' + GroupChatEvent.message);
 	//   console.log(SLbot);
 	//  console.log(client.container);
-	/// TODO: Dynamically change the current bot name. 
-	if (GroupChatEvent.fromName === "fhdiscordrelay Resident") return;
+	let currentBot = process.env.SL_FIRSTNAME + " " + process.env.SL_LASTNAME;
+	if (GroupChatEvent.fromName === currentBot) return;
 	const id = new nmv.UUID(GroupChatEvent.from);
 	let img = "10991f3b-980e-88d8-867a-b2670da85701"; // Default to Fox Hollow Logo
 	let profile;
@@ -34,7 +34,7 @@ module.exports = async (client, GroupChatEvent) => {
 				try {
 					const profile = await axios.get(`http://world.secondlife.com/resident/${id}`)
 					img = await profile.data.split('meta name="imageid" content="')[1].split('" />')[0];
-					console.log("Image UUID Recieved: " + img);
+				//	console.log("Image UUID Recieved: " + img);
 				} catch (error) {
 					console.error(error);
 				} finally {
