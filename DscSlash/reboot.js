@@ -2,13 +2,6 @@ exports.run = async (client, interaction) => { // eslint-disable-line no-unused-
     await interaction.deferReply();
     const reply = await interaction.editReply("Bot initiating logout and shutdown");
     // await interaction.editReply(`Bot initiating logout and shutdown`);
-
-    await Promise.all(client.container.commands.map(cmd => {
-        // the path is relative to the *current folder*, so just ./filename.js
-        delete require.cache[require.resolve(`./${cmd.help.name}.js`)];
-        // We also need to delete and reload the command from the container.commands Enmap
-        client.container.commands.delete(cmd.help.name);
-      }));
       try
       {
           await client.container.SLbot.close();

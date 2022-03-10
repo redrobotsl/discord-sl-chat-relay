@@ -11,7 +11,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 - Copy .env and config.js example files to .env and config.js
 - Insert the Discord Bot Token and Second Life Login Info in .env
 - Insert the Mapping of SL Groups to Discord Channels in config.js
-
+- If needed, add the ignored listings to the config file as well. 
 
 ```bash
 git clone github.com/redrobotsl/sl-discord-relay.git
@@ -22,8 +22,7 @@ cp config.js.example config.js
 
 
 ## Todo
-- Add Region Restart Evasion with Fallback Regions in the Config File
-- Cleanup Code and add sufficient comments. 
+- Add Region Restart Evasion with Fallback Regions in the Config File(On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it)
 - Add Reload Capability of SL and Discord Commands/Event files. 
 
 
@@ -34,5 +33,4 @@ Licensed under the MIT License.
 
 ## Credits
 
-- CasperTech for their implementation of the OMV Protocol and Client in Node. https://github.com/CasperTech/node-metaverse
-- The Creators of the Guidebot Discord Bot. 
+- CasperTech for their implementation of the SL Client in Node.js https://github.com/CasperTech/node-metaverse

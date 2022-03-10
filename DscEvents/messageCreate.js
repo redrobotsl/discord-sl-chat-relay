@@ -27,10 +27,12 @@ module.exports = async (client, message) => {
     return message.reply(`This bot's commands can be used by slash commands`);
   }
 
-    
+    // Loop through the Mappings and see if this message was in a discord channel we are supposed to watch. 
     config.relays.forEach (async (value, key) => {
+      // Oh boi it is. 
         if (value === message.channel.id) {
-          console.log("Discord Channel ID: " + message.channel.id + " maps to SL Group UUID: " + key + " " + typeof key + typeof message.channel.id);
+
+         // console.debug("Discord Channel ID: " + message.channel.id + " maps to SL Group UUID: " + key + " " + typeof key + typeof message.channel.id);
           const groupID = new nmv.UUID(key);
           // Start a group chat session - equivalent to opening a group chat but not sending a message
           await container.SLbot.clientCommands.comms.startGroupChatSession(groupID, '');
