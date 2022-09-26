@@ -1,7 +1,7 @@
 {
-  "name": "sl-discord-bot",
+  "name": "sl-discord-relay",
   "version": "0.0.2",
-  "description": "A SL and Discord Bot in One, capable of handling commands and events from both. ",
+  "description": "Second Life and Discord Chat Relay, able to handle multiple groups and channels. ",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/redrobotsl/sl-discord-bot.git"
+    "url": "git+https://github.com/redrobotsl/sl-discord-relay.git"
   },
-  "author": "Jacob Fear <jacobfear12@gmail.com>",
+  "author": "Nolan Perry/Dark Nebula <nolan@darknebula.world>",
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/redrobotsl/sl-discord-bot/issues"
+    "url": "https://github.com/redrobotsl/sl-discord-relay/issues"
   },
-  "homepage": "https://github.com/redrobotsl/sl-discord-bot",
+  "homepage": "https://github.com/redrobotsl/sl-discord-relay/issues",
   "dependencies": {
     "@caspertech/node-metaverse": "^0.5.31",
     "@discordjs/builders": "^0.2.0",
