@@ -1,4 +1,10 @@
 # SL Discord Relay Bot
+[![GitHub issues](https://img.shields.io/github/issues/redrobotsl/sl-discord-relay)](https://github.com/redrobotsl/sl-discord-relay/issues)
+[![GitHub forks](https://img.shields.io/github/forks/redrobotsl/sl-discord-relay)](https://github.com/redrobotsl/sl-discord-relay/network)
+[![GitHub stars](https://img.shields.io/github/stars/redrobotsl/sl-discord-relay)](https://github.com/redrobotsl/sl-discord-relay/stargazers)
+[![GitHub license](https://img.shields.io/github/license/redrobotsl/sl-discord-relay)](https://github.com/redrobotsl/sl-discord-relay/blob/master/LICENSE)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/73735db5bf0a441591c1e312a1ed3b17)](https://www.codacy.com/gh/redrobotsl/sl-discord-relay/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=redrobotsl/sl-discord-relay&amp;utm_campaign=Badge_Grade)
+
 
 A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels, supports (theoretically) as many groups as the second life allows(42 for normal accounts, 70 for premium). This has not been tested with more than 10 groups, your available memory is also a limitation. 
 
