@@ -17,7 +17,8 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 - Copy .env and config.js example files to .env and config.js
 - Insert the Discord Bot Token and Second Life Login Info in .env
 - Insert the Mapping of SL Groups to Discord Channels in config.js
-- If needed, add the ignored listings to the config file as well. 
+- If needed, add the ignored listings to the config file as well.
+- You should now be able to run the index.js via node index.js and run the bot. 
 
 ```bash
 git clone github.com/redrobotsl/sl-discord-relay.git
