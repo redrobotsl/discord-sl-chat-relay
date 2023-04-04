@@ -21,7 +21,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 - You should now be able to run the index.js via node index.js and run the bot. 
 
 ```bash
-git clone github.com/redrobotsl/sl-discord-relay.git
+git clone https://github.com/redrobotsl/discord-sl-chat-relay.git 
 npm install --no-dev
 cp .env-example .env
 cp config.js.example config.js
