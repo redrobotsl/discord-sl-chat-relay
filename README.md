@@ -13,7 +13,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 ## Install 
 
 - Clone a copy of the repository to your machine 
-- Run npm install on the folder
+- Run npm install --no-dev in the folder
 - Copy .env and config.js example files to .env and config.js
 - Insert the Discord Bot Token and Second Life Login Info in .env
 - Insert the Mapping of SL Groups to Discord Channels in config.js
