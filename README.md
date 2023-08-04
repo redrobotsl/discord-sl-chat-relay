@@ -203,8 +203,5 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [license-url]: https://github.com/Vault108/discord-sl-chat-relay/blob/master/LICENSE
 [JavaScript]:https://img.shields.io/badge/js-35495E?style=for-the-badge&logo=javascript&logoColor=4FC08D
 [JavaScript-url]: https://vuejs.org/
-[Node]: 
-[Node-url]:
-[NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-[NPM-url]:
+
 
