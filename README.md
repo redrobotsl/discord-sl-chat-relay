@@ -112,9 +112,13 @@ To get a local copy up and running follow these simple example steps.
 *  Node
     * Refer to [Installing Node.js](https://nodejs.org/en/download/current)
  
-   If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
-*  A Discord Bot Token
+    *  If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
+*  A Discord Bot Token:
     * Refer to [This Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) if you are not sure how to do this.
+* Discord Channel ID:
+    * This is a good [video](https://www.youtube.com/watch?v=NLWtSHWKbAI)
+* Second Life Group UUID:
+    * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how 
 ### Installation
 
 1. Clone the repo and open the repository folder
@@ -160,7 +164,12 @@ To get a local copy up and running follow these simple example steps.
 	 ["SL Group UUID", "Discord Channel ID"] //  <- For just one group no comma after the final bracket
 	 ]),
    ```
+
 7. Start the bot with  `node index.js`
+
+8. Invite the bot to your server:  
+    * [Here](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) is how to do it
+  
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
