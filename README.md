@@ -65,11 +65,9 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -107,7 +105,7 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-* npm
+* The Latest NPM
   ```sh
   npm install npm@latest -g
   ```
@@ -115,26 +113,56 @@ To get a local copy up and running follow these simple example steps.
     * Refer to [Installing Node.js](https://nodejs.org/en/download/current)
  
    If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
-
+*  A Discord Bot Token
+    * Refer to [This Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) if you are not sure how to do this.
 ### Installation
 
-1. Clone the repo
+1. Clone the repo and open the repository folder
    ```sh
-   git clone https://github.com/redrobotsl/discord-sl-chat-relay.git 
+   git clone https://github.com/redrobotsl/discord-sl-chat-relay.git && cd discord-sl-chat-relay
    ```
-2. Install NPM packages
+2. Run npm install in the folder
    ```sh
-   npm install
+   npm install --no-dev
    ```
-3. Enter your API in `config.js`
+3. Copy the `.env-example` to `.env` 
+    ```sh
+    cp .env-example .env
+    ```
+4. Copy `config.js.example` to `config.js`
+    ```sh 
+    cp config.js.example .config.js
+     ```
+5. Fill out `.env` with the required environment variables:
+   ```ini
+   DISCORD_TOKEN= 
+   OWNER= 
+   SL_FIRSTNAME= 
+   SL_LASTNAME= 
+   SL_PASSWORD= 
+   SL_START=
+   ```
+6. Edit `config.js` to map the inworld group UUIDS to teh Discord Channel IDS:
    ```js
-   const API_KEY = 'ENTER YOUR API';
+    relays: new Map([
+     ["SL GROUP UUID", "DISCORD CHANNEL ID"] // <- for just one group no comma after the final ]
+    ]),
    ```
+    <center>For Multiple </center>
+    
+    ```js
+	relays: new Map([
+	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
+	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
+	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
+	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
+	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
+	 ["SL Group UUID", "Discord Channel ID"] //  <- For just one group no comma after the final bracket
+	 ]),
+   ```
+7. Start the bot with  `node index.js`
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 
 
 <!-- ROADMAP -->
