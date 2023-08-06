@@ -14,12 +14,12 @@ const config = {
 
 	// //// This maps inworld group UUIDs to Discord Channels.
 	relays: new Map([
-		["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
-		["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
-		["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
-		["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
-		["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after the final bracket
-		["SL Group UUID", "Discord Channel ID"] //  <- For just one group no comma after the final bracket
+		["SL Group UUID", "Discord Channel ID"], //  For Multiple relays you need a comma after each bracket but the last one
+		["SL Group UUID", "Discord Channel ID"], //  For Multiple relays you need a comma after each bracket but the last one
+		["SL Group UUID", "Discord Channel ID"], //  For Multiple relays you need a comma after each bracket but the last one
+		["SL Group UUID", "Discord Channel ID"], //  For Multiple relays you need a comma after each bracket but the last one
+		["SL Group UUID", "Discord Channel ID"], //  For Multiple relays you need a comma after each bracket but the last one
+		["SL Group UUID", "Discord Channel ID"] //   For Multiple relays you need a comma after each bracket but the last one
 	  ]),
 	// Array of SL UUIDs to Ignore and not relay, say if you have a bot that regularly posts in group chat or something.
 	'ignored': ['49d6a705-de90-4458-b166-ccf56401053c'],
