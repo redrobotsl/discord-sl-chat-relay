@@ -118,7 +118,8 @@ To get a local copy up and running follow these simple example steps.
 * Discord Channel ID:
     * This is a good [video](https://www.youtube.com/watch?v=NLWtSHWKbAI)
 * Second Life Group UUID:
-    * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how 
+    * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how
+    * In world the bot must be in the groups you want it to relay.
 ### Installation
 
 1. Clone the repo and open the repository folder
