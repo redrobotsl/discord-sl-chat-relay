@@ -150,7 +150,7 @@ To get a local copy up and running follow these simple example steps.
 6. Edit `config.js` to map the inworld group UUIDS to teh Discord Channel IDS:
    ```js
     relays: new Map([
-     ["SL GROUP UUID", "DISCORD CHANNEL ID"] // <- for just one group no comma after the final bracket
+     ["SL GROUP UUID", "DISCORD CHANNEL ID"] // <- for just one group no comma after the bracket
     ]),
    ```
     <center>For Multiple </center>
