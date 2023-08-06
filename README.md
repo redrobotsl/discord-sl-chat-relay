@@ -150,19 +150,19 @@ To get a local copy up and running follow these simple example steps.
 6. Edit `config.js` to map the inworld group UUIDS to teh Discord Channel IDS:
    ```js
     relays: new Map([
-     ["SL GROUP UUID", "DISCORD CHANNEL ID"] // <- for just one group no comma after the bracket
+     ["SL GROUP UUID", "DISCORD CHANNEL ID"] // For just one group no comma after the bracket
     ]),
    ```
     <center>For Multiple </center>
     
     ```js
 	relays: new Map([
-	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after each bracket but the last one
-	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after each bracket but the last one
-	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after each bracket but the last one
-	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after each bracket but the last one
-	 ["SL Group UUID", "Discord Channel ID"], // <- For Multiple relays you need a comma after each bracket but the last one
-	 ["SL Group UUID", "Discord Channel ID"] //  <- No Comma After the final bracket.
+	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
+	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
+	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
+	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
+	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
+	 ["SL Group UUID", "Discord Channel ID"] //  No Comma After the final bracket.
 	 ]),
    ```
 
