@@ -100,8 +100,6 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
@@ -120,7 +118,7 @@ To get a local copy up and running follow these simple example steps.
 * Second Life Group UUID:
     * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how
     * In world the bot must be in the groups you want it to relay.
-### Installation
+## Installation
 
 1. Clone the repo and open the repository folder
    ```sh
