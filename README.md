@@ -236,7 +236,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 [issues-shield]: https://img.shields.io/github/issues/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
 [issues-url]: https://github.com/redrobotsl/discord-sl-chat-relay/issues
 [license-shield]: https://img.shields.io/github/license/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[license-url]: https://github.com/Vault108/discord-sl-chat-relay/blob/master/LICENSE
+[license-url]: https://github.com/redrobotsl/discord-sl-chat-relay/blob/master/LICENSE
 [JavaScript]:https://img.shields.io/badge/js-35495E?style=for-the-badge&logo=javascript&logoColor=4FC08D
 [JavaScript-url]: https://vuejs.org/
 
