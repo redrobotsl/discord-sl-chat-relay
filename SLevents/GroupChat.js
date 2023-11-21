@@ -19,8 +19,7 @@ module.exports = async (client, GroupChatEvent) => {
 	if (GroupChatEvent.fromName === currentBot) return;
 	if (config.ignored.includes(GroupChatEvent.from.toString())) return;
 	const id = new nmv.UUID(GroupChatEvent.from);
-	let img = '10991f3b-980e-88d8-867a-b2670da85701';
-	// Default to Fox Hollow Logo
+	let img = 'bfc51542-be49-4595-9784-aec1e3f612dc';
 	// if (GroupChatEvent.groupID.toString() === config.roleplayUUID) {
 	if (config.relays.has(GroupChatEvent.groupID.toString())) {
 		try {
@@ -30,7 +29,7 @@ module.exports = async (client, GroupChatEvent) => {
 			if (id) {
 				try {
 					const profile = await axios.get(`http://world.secondlife.com/resident/${id}`);
-					img = await profile.data.split('meta name="imageid" content="')[1].split('" />')[0];
+					img = await profile.data.split('<meta name="imageid" content="')[1].split('">')[0];
 				//	console.log("Image UUID Recieved: " + img);
 				}
 				catch (error) {
