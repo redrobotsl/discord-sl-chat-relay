@@ -1,5 +1,3 @@
-
-
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
@@ -10,8 +8,6 @@
 *** Thanks again! Now go create something AMAZING! :D
 -->
 
-
-
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -20,13 +16,11 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-
+[![Contributors][contributors-shield]][contributors-URL]
+[![Forks][forks-shield]][forks-URL]
+[![Stargazers][stars-shield]][stars-URL]
+[![Issues][issues-shield]][issues-URL]
+[![MIT License][license-shield]][license-URL]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -45,8 +39,6 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
     <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -72,42 +64,31 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels, supports (theoretically) as many groups as the second life allows(42 for normal accounts, 70 for premium). This has not been tested with more than 10 groups, your available memory is also a limitation.
 
-
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) --> 
 
-
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 ### Built With
-
-  ![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
-  ![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
-  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+  [![NodeJS-Icon]][NodeJs-URL]
+  [![NPM-icon]][NPM-URL]
+  [![JavaScript-Icon]][JavaScript-URL]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-
 ### Prerequisites
 
-* The Latest NPM
+* The Latest NPM:
   ```sh
   npm install npm@latest -g
   ```
-*  Node
+*  Node:
     * Refer to [Installing Node.js](https://nodejs.org/en/download/current)
  
     *  If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
@@ -118,21 +99,22 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 * Second Life Group UUID:
     * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how
     * In world the bot must be in the groups you want it to relay.
+
 ## Installation
 
-1. Clone the repo and open the repository folder
+1. Clone the repo and open the repository folder:
    ```sh
    git clone https://github.com/redrobotsl/discord-sl-chat-relay.git && cd discord-sl-chat-relay
    ```
-2. Run npm install in the folder
+2. Run npm install in the folder:
    ```sh
    npm install --no-dev
    ```
-3. Copy the `.env-example` to `.env` 
+3. Copy the `.env-example` to `.env`:
     ```sh
     cp .env-example .env
     ```
-4. Copy `config.js.example` to `config.js`
+4. Copy `config.js.example` to `config.js`:
     ```sh 
     cp config.js.example .config.js
      ```
@@ -151,8 +133,10 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
      ["SL GROUP UUID", "DISCORD CHANNEL ID"] // For just one group no comma after the bracket
     ]),
    ```
-    <center>For Multiple </center>
+
+   For Multiple:
     
+ 
     ```js
 	relays: new Map([
 	 ["SL Group UUID", "Discord Channel ID"], // For Multiple relays you need a comma after each bracket but the last one
@@ -164,7 +148,11 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 	 ]),
    ```
 
-7. Start the bot with  `node index.js`
+7. Start the bot using:
+ 
+   ```sh
+   node index.js
+   ```
 
 8. Invite the bot to your server:  
     * [Here](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) is how to do it
@@ -172,8 +160,8 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- ROADMAP -->
+
 ## Roadmap
 
 - [ ] Add Region Restart Evasion with Fallback Regions in the Config File
@@ -185,9 +173,8 @@ See the [open issues](https://github.com/redrobotsl/discord-sl-chat-relay/issues
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -203,41 +190,38 @@ Don't forget to give the project a star! Thanks again!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- ACKNOWLEDGMENTS -->
+
 ## Acknowledgments
 
 * CasperTech for their implementation of the SL Client in Node.js https://github.com/CasperTech/node-metaverse
 <!-- * []() --> 
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[contributors-url]: https://github.com/redrobotsl/discord-sl-chat-relay/graphs/contributors
+[contributors-URL]: https://github.com/redrobotsl/discord-sl-chat-relay/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[forks-url]: https://github.com/redrobotsl/discord-sl-chat-relay/network/members
+[forks-URL]: https://github.com/redrobotsl/discord-sl-chat-relay/network/members
 [stars-shield]: https://img.shields.io/github/stars/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[stars-url]: https://github.com/redrobotsl/discord-sl-chat-relay/stargazers
+[stars-URL]: https://github.com/redrobotsl/discord-sl-chat-relay/stargazers
 [issues-shield]: https://img.shields.io/github/issues/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[issues-url]: https://github.com/redrobotsl/discord-sl-chat-relay/issues
+[issues-URL]: https://github.com/redrobotsl/discord-sl-chat-relay/issues
 [license-shield]: https://img.shields.io/github/license/redrobotsl/discord-sl-chat-relay.svg?style=for-the-badge
-[license-url]: https://github.com/Vault108/discord-sl-chat-relay/blob/master/LICENSE
-[JavaScript]:https://img.shields.io/badge/js-35495E?style=for-the-badge&logo=javascript&logoColor=4FC08D
-[JavaScript-url]: https://vuejs.org/
-
-
+[license-URL]: https://github.com/redrobotsl/discord-sl-chat-relay/blob/master/LICENSE
+[JavaScript-Icon]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
+[JavaScript-URL]: https://www.javascript.com/
+[NPM-Icon]: https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white 
+[NPM-URL]:  https://www.npmjs.com/
+[NodeJs-Icon]: https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white
+[NodeJS-URL]: https://nodejs.org/en
