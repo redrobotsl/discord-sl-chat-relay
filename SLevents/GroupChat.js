@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 /* eslint-disable no-unused-vars */
 const { permlevel,
 } = require('../modules/functions.js');

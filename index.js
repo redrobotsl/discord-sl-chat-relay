@@ -50,6 +50,7 @@ client.container = {
 };
 
 const GroupChatEventHandler = require('./SLevents/GroupChat.js');
+const ChatEventHandler = require('./SLevents/ChatEvent.js');
 
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
@@ -72,6 +73,10 @@ const init = async () => {
 
 		client.container.SLbot.clientEvents.onGroupChat.subscribe((eventInfo) => {
 			GroupChatEventHandler(client, eventInfo);
+
+		});
+		client.container.SLbot.clientEvents.onNearbyChat.subscribe((eventInfo) => {
+			ChatEventHandler(client, eventInfo);
 
 		});
 
