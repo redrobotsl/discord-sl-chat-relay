@@ -14,7 +14,14 @@ const config = {
 
 	// //// This maps inworld group UUIDs to Discord Channels.
 	relays: new Map([
-		['1b6af450-96e2-8fad-291c-74fc4928f0b1', '1176644698027331745'],
+		 ["22ca10b6-3ca5-f677-04e4-572b30e6703c", "1179885198675038249"], // Red Robot Main Group (Client: dark.nebula)
+                ["1b6af450-96e2-8fad-291c-74fc4928f0b1", "1176644698027331745"],
+                ["ced9a7f0-9f9c-de9f-7998-a9470553d0a0", "1174495747702530058"], // Heterocera Equestrian (Client: dark.nebula)
+                ["dc3d6223-1569-a0c8-dfdf-781278984752", "1167986074224705536"], // Morgantown Land Group (Client: ozy09)
+                ["580d69f5-6382-2053-ed77-9abbbebed200", "1179887813286690927"], // Bridgerton County (Client: josephtucker)
+                ["04ed96ac-3e3f-bc88-d6ae-a7576fd5867e", "1061738641736613898"], // Bridgerton County RP Group (Client: josephtucker)
+		["0a293f01-534c-4c81-e108-b1d1a6fb4d70", "1221903973561139220"],
+		["e4e7c3d7-e863-721b-dd45-eabfaf17c2a6", "1225976476491321344"]  // The Mast Yacht Club and Marina
 	  ]),
 	// Array of SL UUIDs to Ignore and not relay, say if you have a bot that regularly posts in group chat or something.
 	'ignored': ['49d6a705-de90-4458-b166-ccf56401053c'],
