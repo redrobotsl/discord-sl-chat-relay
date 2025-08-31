@@ -22,7 +22,6 @@ module.exports = async (client, GroupChatEvent) => {
 			if (GroupChatEvent.message.startsWith('/me')) {
 				GroupChatEvent.message = `*${GroupChatEvent.message.replace('/me', '').trim()}*`;
 			}
-			if (id) {
 				try {
 					const profile = await axios.get(`http://world.secondlife.com/resident/${id}`);
 					img = await profile.data.split('<meta name="imageid" content="')[1].split('">')[0];
@@ -63,7 +62,6 @@ module.exports = async (client, GroupChatEvent) => {
 						console.error('Error trying to send a message: ', error);
 					}
 				}
-			}
 		}
 		catch (error) {
 			console.error('Failed to relay to discord.');
