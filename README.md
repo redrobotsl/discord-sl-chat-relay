@@ -16,13 +16,17 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+<div align="center">
+	
 [![Contributors][contributors-shield]][contributors-URL]
 [![Forks][forks-shield]][forks-URL]
 [![Stargazers][stars-shield]][stars-URL]
 [![Issues][issues-shield]][issues-URL]
 [![MIT License][license-shield]][license-URL]
 
-<!-- PROJECT LOGO -->
+</div>
+	<!-- PROJECT LOGO -->
 <br />
 <!-- <div align="center">
   <a href="https://github.com/github_username/repo_name">
@@ -34,9 +38,9 @@
   <p align="center">
 A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels. 
     <br />
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/redrobotsl/discord-sl-chat-relay/issues/new?template=bug_report.md">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/redrobotsl/discord-sl-chat-relay/issues/new?template=feature_request.md">Request Feature</a>
   </p>
 </div>
 
@@ -161,6 +165,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 
 8. Invite the bot to your server:  
     * [Here](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) is how to do it
+    * Its just the url you built in the [prerequisites](https://github.com/redrobotsl/discord-sl-chat-relay?tab=readme-ov-file#prerequisites) steps
   
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -170,7 +175,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 ## Roadmap
 
 - [ ] Add Region Restart Evasion with Fallback Regions in the Config File
-    - On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
+- [ ] On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
 - [ ] Add Reload Capability of SL and Discord Commands/Event files.
 
 See the [open issues](https://github.com/redrobotsl/discord-sl-chat-relay/issues) for a full list of proposed features (and known issues).
