@@ -16,13 +16,17 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
+
+<div align="center">
+	
 [![Contributors][contributors-shield]][contributors-URL]
 [![Forks][forks-shield]][forks-URL]
 [![Stargazers][stars-shield]][stars-URL]
 [![Issues][issues-shield]][issues-URL]
 [![MIT License][license-shield]][license-URL]
 
-<!-- PROJECT LOGO -->
+</div>
+	<!-- PROJECT LOGO -->
 <br />
 <!-- <div align="center">
   <a href="https://github.com/github_username/repo_name">
@@ -34,9 +38,9 @@
   <p align="center">
 A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels. 
     <br />
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/redrobotsl/discord-sl-chat-relay/issues/new?template=bug_report.md">Report Bug</a>
+    |
+    <a href="https://github.com/redrobotsl/discord-sl-chat-relay/issues/new?template=feature_request.md">Request Feature</a>
   </p>
 </div>
 
@@ -85,9 +89,11 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 ### Prerequisites
 
 * The Latest NPM:
+
   ```sh
   npm install npm@latest -g
   ```
+
 *  Node:
     * Refer to [Installing Node.js](https://nodejs.org/en/download/current) 
     *  If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
@@ -111,20 +117,24 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
    ```sh
    git clone https://github.com/redrobotsl/discord-sl-chat-relay.git && cd discord-sl-chat-relay
    ```
+   
 2. Run npm install in the folder:
    ```sh
-   npm install
+   npm install --no-dev
    ```
+   
 3. Copy the `.env-example` to `.env`:
     ```sh
     cp .env-example .env
     ```
+    
 4. Copy `config.js.example` to `config.js`:
     ```sh 
     cp config.js.example .config.js
      ```
+     
 5. Fill out `.env` with the required environment variables:
-   ```ini
+   ```env
    DISCORD_TOKEN= 
    OWNER= 
    SL_FIRSTNAME= 
@@ -132,15 +142,14 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
    SL_PASSWORD= 
    SL_START=
    ```
+   
 6. Edit `config.js` to map the inworld group UUIDS to the Discord Channel IDS:
    ```js
     relays: new Map([
      ["SL GROUP UUID", "DISCORD CHANNEL ID"] // For just one group no comma after the bracket
     ]),
    ```
-
    For Multiple:
-    
  
     ```js
 	relays: new Map([
@@ -158,11 +167,11 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
    ```sh
    node index.js
    ```
-
+   
 8. Invite the bot to your server:  
     * [Here](https://discordjs.guide/preparations/adding-your-bot-to-servers.html#bot-invite-links) is how to do it
+    * Its just the url you built in the [prerequisites](https://github.com/redrobotsl/discord-sl-chat-relay?tab=readme-ov-file#prerequisites) steps
   
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ROADMAP -->
@@ -170,7 +179,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 ## Roadmap
 
 - [ ] Add Region Restart Evasion with Fallback Regions in the Config File
-    - On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
+	* On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
 - [ ] Add Reload Capability of SL and Discord Commands/Event files.
 
 See the [open issues](https://github.com/redrobotsl/discord-sl-chat-relay/issues) for a full list of proposed features (and known issues).
