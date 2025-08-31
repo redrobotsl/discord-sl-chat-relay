@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 const { permlevel,
 } = require('../modules/functions.js');
 const config = require('../config.js');
@@ -13,9 +11,7 @@ const { MessageEmbed, WebhookClient } = require('discord.js');
 const { UUID } = nmv.UUID;
 module.exports = async (client, GroupChatEvent) => {
 	const SLbot = client.container.SLbot;
-	// console.log('Group chat: ' + GroupChatEvent.fromName + ': ' + GroupChatEvent.message);
-	//   console.log(SLbot);
-	//  console.log(client.container);
+
 	const currentBot = process.env.SL_FIRSTNAME + ' ' + process.env.SL_LASTNAME;
 	if (GroupChatEvent.fromName === currentBot) return;
 	if (config.ignored.includes(GroupChatEvent.from.toString())) return;
