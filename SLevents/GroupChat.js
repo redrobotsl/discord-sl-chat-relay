@@ -57,6 +57,7 @@ module.exports = async (client, GroupChatEvent) => {
 							content: GroupChatEvent.message,
 							username: GroupChatEvent.fromName + ' (inworld)',
 							avatarURL: 'https://picture-service.secondlife.com/' + img + '/320x240.jpg',
+							allowedMentions: { parse: [] },
 						});
 					}
 					catch (error) {
