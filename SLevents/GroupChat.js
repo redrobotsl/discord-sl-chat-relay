@@ -8,7 +8,6 @@ const { MessageEmbed, WebhookClient } = require('discord.js');
 // Note that due to the binding of client to every event, every event
 // goes `client, other, args` when this function is run.
 
-const { UUID } = nmv.UUID;
 module.exports = async (client, GroupChatEvent) => {
 	const SLbot = client.container.SLbot;
 
