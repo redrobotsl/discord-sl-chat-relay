@@ -66,7 +66,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels, supports (theoretically) as many groups as the second life allows(42 for normal accounts, 70 for premium). This has not been tested with more than 10 groups, your available memory is also a limitation.
+A Discord and Second Life bot capable of relaying messages between inworld Second Life Groups, and Discord Channels, supports (theoretically) as many groups as second life allows(42 for normal accounts, 70 for premium, 140 for premium plus). This has **NOT** been tested with more than 10 groups, your available memory(ram) is also a limitation.
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) --> 
 
@@ -89,8 +89,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
   npm install npm@latest -g
   ```
 *  Node:
-    * Refer to [Installing Node.js](https://nodejs.org/en/download/current)
- 
+    * Refer to [Installing Node.js](https://nodejs.org/en/download/current) 
     *  If you are confused [Installing Node.js and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) is a good place to start. 
 *  A Discord Bot Token:
     * Refer to [This Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot) if you are not sure how to do this.
@@ -101,8 +100,10 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
     * In world the bot must be in the groups you want it to relay.
 * Add your bot to a discord server using this link(add your CLIENT ID from your bot where specified)
     * https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=137976335360
-    * This gives the bot the following permissions: View Channels, Manage Webhooks, Send Messages, Embed Links, Use External Stickers and Emojis, Mention All Roles, and Read Message History. 
-* Add your Second Life Bot account(NOT YOUR ACCOUNT, THE BOTS!) to all the groups you want to relay. Make sure it has Join Chat enabled!
+    * This gives the bot the following permissions: View Channels, Manage Webhooks, Send Messages, Embed Links, Use External Stickers and Emojis, Mention All Roles, and Read Message History.
+    * Visit this [link](https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID) to find out how to get your CLIENT ID. 
+    * Discord may refer to **Client ID** as **Application ID**, its the same thing.
+* Add your Second Life Bot account(**NOT YOUR ACCOUNT, THE BOTS!**) to all the groups you want to relay. Make sure it has Join Chat enabled!
 
 ## Installation
 
@@ -131,7 +132,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
    SL_PASSWORD= 
    SL_START=
    ```
-6. Edit `config.js` to map the inworld group UUIDS to teh Discord Channel IDS:
+6. Edit `config.js` to map the inworld group UUIDS to the Discord Channel IDS:
    ```js
     relays: new Map([
      ["SL GROUP UUID", "DISCORD CHANNEL ID"] // For just one group no comma after the bracket
@@ -170,7 +171,6 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 
 - [ ] Add Region Restart Evasion with Fallback Regions in the Config File
     - On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
-
 - [ ] Add Reload Capability of SL and Discord Commands/Event files.
 
 See the [open issues](https://github.com/redrobotsl/discord-sl-chat-relay/issues) for a full list of proposed features (and known issues).
