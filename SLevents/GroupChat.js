@@ -28,7 +28,8 @@ module.exports = async (client, GroupChatEvent) => {
 				//	console.log("Image UUID Recieved: " + img);
 				}
 				catch (error) {
-					console.error(error);
+					console.error("Failed fetching profile image:", error.message);
+
 				}
 				finally {
 					const channel = client.channels.cache.get(config.relays.get(GroupChatEvent.groupID.toString()));
