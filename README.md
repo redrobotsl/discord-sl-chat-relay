@@ -113,7 +113,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
    ```
 2. Run npm install in the folder:
    ```sh
-   npm install --no-dev
+   npm install
    ```
 3. Copy the `.env-example` to `.env`:
     ```sh
