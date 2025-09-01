@@ -3,7 +3,7 @@ const { GatewayIntentBits } = require('discord.js');
 /* config */
 const config = {
 	// Bot Admins, level 9 by default. Array of user ID strings.
-	'admins': [],
+	'admins': ["478280993422442497"],
 
 	// Bot Support, level 8 by default. Array of user ID strings
 	'support': [],
