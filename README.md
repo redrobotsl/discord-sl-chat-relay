@@ -105,8 +105,9 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
     * [This](https://community.secondlife.com/forums/topic/358216-how-doi-find-a-group-uuid-key/) SL Forums explains how
     * In world the bot must be in the groups you want it to relay.
 * Add your bot to a discord server using this link(add your CLIENT ID from your bot where specified)
-    * https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=137976335360
-    * This gives the bot the following permissions: View Channels, Manage Webhooks, Send Messages, Embed Links, Use External Stickers and Emojis, Mention All Roles, and Read Message History.
+    * https://discord.com/oauth2/authorize?client_id=CLIENT_ID_HERE&scope=bot&permissions=140123819008
+    * This gives the bot the following permissions: View Channels, Manage Webhooks, Send Messages, Embed Links, Attach Files, Use External Stickers and Emojis, Mention All Roles, Use Application Commands and Read Message History.
+    * **If the server requires 2 Factor Authentication(2FA), the bot owner must also have 2FA enable.**
     * Visit this [link](https://support-dev.discord.com/hc/en-us/articles/360028717192-Where-can-I-find-my-Application-Team-Server-ID) to find out how to get your CLIENT ID. 
     * Discord may refer to **Client ID** as **Application ID**, its the same thing.
 * Add your Second Life Bot account(**NOT YOUR ACCOUNT, THE BOTS!**) to all the groups you want to relay. Make sure it has Join Chat enabled!
