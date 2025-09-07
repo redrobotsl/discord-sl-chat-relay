@@ -7,7 +7,7 @@ exports.run = async (client, interaction) => { // eslint-disable-line no-unused-
 
   const statsEmbed = new MessageEmbed()
     .setColor('#0099ff')
-    .setTitle('=STATISTICS=')
+    .setTitle('STATISTICS')
     .addFields(
       { name: 'Memory Usage', value: `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} MB`, inline: true },
       { name: 'Uptime', value: duration, inline: true },
