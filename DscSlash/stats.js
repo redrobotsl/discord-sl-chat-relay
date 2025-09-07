@@ -2,7 +2,7 @@ const { MessageEmbed, version } = require("discord.js");
 const { DurationFormatter } = require("@sapphire/time-utilities");
 const durationFormatter = new DurationFormatter();
 
-exports.run = async (client, interaction) => {
+exports.run = async (client, interaction) => { // eslint-disable-line no-unused-vars
   const duration = durationFormatter.format(client.uptime);
 
   const statsEmbed = new MessageEmbed()
@@ -29,6 +29,8 @@ exports.commandData = {
   defaultPermission: true,
 };
 
+// Set guildOnly to true if you want it to be available on guilds only.
+// Otherwise false is global.
 exports.conf = {
   permLevel: "User",
   guildOnly: false
