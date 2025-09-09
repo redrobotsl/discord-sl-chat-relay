@@ -19,11 +19,16 @@ const config = {
  ]),
 	// Array of SL UUIDs to Ignore and not relay, say if you have a bot that regularly posts in group chat or something.
 	'ignored': ['49d6a705-de90-4458-b166-ccf56401053c'],
+
+
 	/*
 
 
 Settings for local chat relay
 */
+
+ 	// Use Display Names? 
+	'enableDisplayNames': true,
 	// Enable Local Chat Relay
 	'relayLocal': true,
 
