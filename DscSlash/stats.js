@@ -1,11 +1,11 @@
-const { MessageEmbed, version } = require("discord.js");
+const { EmbedBuilder, version } = require("discord.js");
 const { DurationFormatter } = require("@sapphire/time-utilities");
 const durationFormatter = new DurationFormatter();
 
 exports.run = async (client, interaction) => { // eslint-disable-line no-unused-vars
   const duration = durationFormatter.format(client.uptime);
 
-  const statsEmbed = new MessageEmbed()
+  const statsEmbed = new EmbedBuilder()
     .setColor('#0099ff')
     .setTitle('STATISTICS')
     .addFields(
