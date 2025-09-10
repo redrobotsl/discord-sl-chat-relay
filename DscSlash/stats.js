@@ -5,9 +5,11 @@ const packageinfo = require("../package.json");
 const name = packageinfo.name;
 const bot_version = packageinfo.version;
 const dependencies = packageinfo.dependencies;
+const dependencyList = Object.entries(dependencies).map(([pkg, ver]) => `${pkg}@${ver}`).join("\n ");
 console.log(`package name: ${name}`);
 console.log(`package version: ${bot_version}`);
 console.log(`dependencies:`, dependencies);
+
 exports.run = async (client, interaction) => { // eslint-disable-line no-unused-vars
   const duration = durationFormatter.format(client.uptime);
 
@@ -23,6 +25,7 @@ exports.run = async (client, interaction) => { // eslint-disable-line no-unused-
       { name: 'Discord.js', value: `v${version}`, inline: false },
       { name: 'Node.js', value: process.version, inline: false },
       { name: 'Bot Version', value: `v${bot_version}`, inline: false },
+      { name: 'Dependencies', value: dependencyList, inline: false },
     )
     .setTimestamp();
 
