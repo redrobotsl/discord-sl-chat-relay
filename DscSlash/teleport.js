@@ -16,51 +16,39 @@ function parseSLURL(slurl) {
 const { permlevel } = require('../modules/functions.js');
 const config = require('../config.js');
 
-exports.run = async (client, interaction) => {
-    // Check admin permission
-    const member = interaction.member;
-    const userPermLevel = permlevel(interaction);
-    const requiredLevel = config.permLevels.find(l => l.name === 'Bot Admin')?.level || 10;
-    if (userPermLevel < requiredLevel) {
-        await interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
-        return;
-    }
-
-    await interaction.deferReply();
-    const slurl = interaction.options.getString('slurl');
-    const loc = parseSLURL(slurl);
-    if (!loc) {
-        await interaction.editReply('Invalid SLURL format. Please use a link like http://maps.secondlife.com/secondlife/Region/xxx/yyy/zzz');
-        return;
-    }
-    await interaction.editReply(`Attempting teleport to ${loc.region} (${loc.x}, ${loc.y}, ${loc.z})...`);
-    try {
-        // Use teleportTo(regionName, position, lookAt)
-        const { Vector3 } = client.container.nmv;
-        const position = new Vector3(loc.x, loc.y, loc.z);
-        const lookAt = position;
-        await client.container.SLbot.clientCommands.teleport.teleportTo(loc.region, position, lookAt);
-        await interaction.followUp(`Teleport successful to ${loc.region} (${loc.x}, ${loc.y}, ${loc.z})`);
-    } catch (err) {
-        await interaction.followUp(`Teleport failed: ${err.message}`);
-    }
-};
-
-exports.commandData = {
-    name: 'teleport',
-    description: 'Teleport the bot to a Second Life SLURL',
-    options: [
-        {
-            name: 'slurl',
-            description: 'Second Life SLURL (e.g. http://maps.secondlife.com/secondlife/Region/x/y/z)',
-            type: 3, // STRING
-            required: true
+module.exports = {
+    data: new SlashCommandBuilder()
+        .setName('teleport')
+        .setDescription('Teleport the bot to a Second Life SLURL')
+        .addStringOption(option =>
+            option.setName('slurl')
+                .setDescription('Second Life SLURL (e.g., http://maps.secondlife.com/secondlife/Region/x/y/z)')
+                .setRequired(true)),
+    async execute(interaction) {
+        const userPermLevel = permlevel(interaction);
+        const requiredLevel = config.permLevels.find(l => l.name === 'Bot Admin')?.level || 10;
+        if (userPermLevel < requiredLevel) {
+            return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
         }
-    ],
-    defaultPermission: true,
-};
 
-exports.conf = {
-    permLevel: 'Bot Admin',
-    guildOnly: false
+        await interaction.deferReply();
+        const slurl = interaction.options.getString('slurl');
+        const loc = parseSLURL(slurl);
+
+        if (!loc) {
+            return interaction.editReply('Invalid SLURL format. Please use a link like http://maps.secondlife.com/secondlife/Region/x/y/z');
+        }
+
+        await interaction.editReply(`Attempting teleport to ${loc.region} (${loc.x}, ${loc.y}, ${loc.z})...`);
+
+        try {
+            const { Vector3 } = interaction.client.container.nmv;
+            const position = new Vector3(loc.x, loc.y, loc.z);
+            const lookAt = position;
+            await interaction.client.container.SLbot.clientCommands.teleport.teleportTo(loc.region, position, lookAt);
+            await interaction.followUp(`Teleport successful to ${loc.region} (${loc.x}, ${loc.y}, ${loc.z})`);
+        } catch (err) {
+            await interaction.followUp(`Teleport failed: ${err.message}`);
+        }
+    },
 };
