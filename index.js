@@ -16,9 +16,8 @@ const logger = require('./modules/Logger.js');
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're referring to. Your client.
+const packageinfo = require("../package.json");
 const client = new Client({ intents, partials });
-
-
 const slashcmds = new Collection();
 
 const { UUID } = nmv;
@@ -136,7 +135,18 @@ const init = async () => {
 
     // This logs a message to the console once the bot has successfully logged in.
     client.once(Events.ClientReady, c => {
+        const packageinfo = require("./package.json"); 
+        const dversion = packageinfo.version;
+        const name = packageinfo.name;
         console.log(`Ready! Logged in as ${c.user.tag}`);
+        logger.log(`package name: ${name}`);
+        logger.log(`package version: ${dversion}`);
+    const pkg = require('./package.json');
+        Object.entries(pkg.dependencies || {}).forEach(([dep, ver]) => {
+            logger.log(`dependency: ${dep}@${ver}`);
+        });
+
+
     });
     
     // This adds an error listener
