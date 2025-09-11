@@ -40,9 +40,15 @@ Settings for local chat relay
   * Intents the bot needs.
   * By default GuideBot needs Guilds and Guild Messages to work.
   */
-	intents: [ GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent ],
+	intents: [ 
+		GatewayIntentBits.Guilds, 
+		GatewayIntentBits.GuildMessages, 
+		GatewayIntentBits.MessageContent, 
+		GatewayIntentBits.DirectMessages,
+		GatewayIntentBits.DirectMessageTyping
+	],
 	// Partials your bot may need should go here, CHANNEL is required for DM's
-	partials: ['CHANNEL'],
+	partials: ['Channel', 'Message'],
 
 
 	// PERMISSION LEVEL DEFINITIONS.
