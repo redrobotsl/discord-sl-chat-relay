@@ -2,12 +2,8 @@ const { SlashCommandBuilder, EmbedBuilder, version } = require("discord.js");
 const { DurationFormatter } = require("@sapphire/time-utilities");
 const durationFormatter = new DurationFormatter();
 const packageinfo = require("../package.json");
-const name = packageinfo.name;
 const dversion = packageinfo.version;
-const dependencies = packageinfo.dependencies;
-console.log(`package name: ${name}`);
-console.log(`package version: ${dversion}`);
-console.log(`dependencies:`, dependencies);
+
 const os = require('os');
 
 module.exports = {
