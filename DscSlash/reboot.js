@@ -1,30 +1,21 @@
-exports.run = async (client, interaction) => { // eslint-disable-line no-unused-vars
-    await interaction.deferReply();
-    const reply = await interaction.editReply("Bot initiating logout and shutdown");
-    // await interaction.editReply(`Bot initiating logout and shutdown`);
-      try
-      {
-          await client.container.SLbot.close();
-      }
-      catch (error)
-      {
-        logger.log(`SL: Error when logging out client`, "error");
-        logger.log(error, "error");
-      }
-      process.exit(0);
+const { SlashCommandBuilder } = require("discord.js");
 
-  };
-  
-  exports.commandData = {
-    name: "reboot",
-    description: "Shuts down the bot. If running under PM2, bot will restart automatically.",
-    options: [],
-    defaultPermission: true,
-  };
-  
-  // Set guildOnly to true if you want it to be available on guilds only.
-  // Otherwise false is global.
-  exports.conf = {
-    permLevel: "Bot Admin",
-    guildOnly: false
-  };
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName("reboot")
+    .setDescription("Shuts down the bot. If running under PM2, bot will restart automatically."),
+
+  async execute(interaction) {
+    await interaction.reply({ content: "Bot initiating logout and shutdown..." });
+
+    try {
+      await interaction.client.container.SLbot.close();
+    } catch (error) {
+      // Assuming logger is defined elsewhere
+      logger.log(`SL: Error when logging out client`, "error");
+      logger.log(error, "error");
+    }
+    
+    process.exit(0);
+  },
+};

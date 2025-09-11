@@ -5,7 +5,7 @@ if (Number(process.version.slice(1).split('.')[0]) < 16) throw new Error('Node 1
 require('dotenv').config();
 
 // Load up the discord.js library
-const { Client, Collection } = require('discord.js');
+const { Client, Collection, Events } = require('discord.js');
 // Load Node Meta
 const nmv = require('@caspertech/node-metaverse');
 // We also load the rest of the things we need in this file:
@@ -21,7 +21,7 @@ const client = new Client({ intents, partials });
 
 const slashcmds = new Collection();
 
-const { UUID } = nmv.UUID;
+const { UUID } = nmv;
 
 const loginParameters = new nmv.LoginParameters();
 loginParameters.firstName = process.env.SL_FIRSTNAME;
@@ -35,18 +35,15 @@ const SLbot = new nmv.Bot(loginParameters, options);
 
 // Generate a cache of client permissions for pretty perm names in commands.
 const levelCache = {};
-for (let i = 0; i < permLevels.length; i++) {
-	const thisLevel = permLevels[i];
-	levelCache[thisLevel.name] = thisLevel.level;
-}
+
 
 // To reduce client pollution we'll create a single container property
 // that we can attach everything we need to.
 client.container = {
-	slashcmds,
-	levelCache,
-	SLbot,
-	nmv,
+    slashcmds,
+    levelCache,
+    SLbot,
+    nmv,
 };
 
 const GroupChatEventHandler = require('./SLevents/GroupChat.js');
@@ -58,61 +55,98 @@ const ChatEventHandler = require('./SLevents/ChatEvent.js');
 const init = async () => {
 
 
-	client.container.SLbot.login().then((response) => {
-		logger.log('SL: Login Complete', 'log');
+    client.container.SLbot.login().then((response) => {
+        logger.log('SL: Login Complete', 'log');
 
-		// Establish circuit with region
-		return client.container.SLbot.connectToSim();
-	}).then(() => {
-		logger.log('SL: Connected to Region', 'log');
+        // Establish circuit with region
+        return client.container.SLbot.connectToSim();
+    }).then(() => {
+        logger.log('SL: Connected to Region', 'log');
 
 
-	}).then(async () => {
+    }).then(async () => {
 
-		// client.container.SLbot.clientEvents.onGroupChat.subscribe(groupChatEventFile.bind(client));
+        // client.container.SLbot.clientEvents.onGroupChat.subscribe(groupChatEventFile.bind(client));
 
-		client.container.SLbot.clientEvents.onGroupChat.subscribe((eventInfo) => {
-			GroupChatEventHandler(client, eventInfo);
+        client.container.SLbot.clientEvents.onGroupChat.subscribe((eventInfo) => {
+            GroupChatEventHandler(client, eventInfo);
 
-		});
-		client.container.SLbot.clientEvents.onNearbyChat.subscribe((eventInfo) => {
-			ChatEventHandler(client, eventInfo);
+        });
+        client.container.SLbot.clientEvents.onNearbyChat.subscribe((eventInfo) => {
+            ChatEventHandler(client, eventInfo);
         
-		});
-		// TODO: add mappings for Group Notices
+        });
+        // TODO: add mappings for Group Notices
 
 
-	}).catch((error) => {
-		console.error(error);
-	});
+    }).catch((error) => {
+        console.error(error);
+    });
+
+    // NOW LOADING DISCORD SIDE OF THE BOT
+
+    // Now we load any **slash** commands you may have in the ./slash directory.
+    const slashFiles = readdirSync('./DscSlash').filter(file => file.endsWith('.js'));
+    for (const file of slashFiles) {
+        const command = require(`./DscSlash/${file}`);
+        const commandName = file.split('.')[0];
+        logger.log(`Loading Slash command: ${commandName}. `, 'log');
+
+        // This is the corrected way to load modern commands.
+        // It now checks for the correct 'data' and 'execute' properties.
+        if ('data' in command && 'execute' in command) {
+            client.container.slashcmds.set(command.data.name, command);
+        } else {
+            logger.log(`[WARNING] The command at ${commandName}.js is missing a required "data" or "execute" property.`, 'error');
+        }
+    }
+
+    // Then we load events, which will include our message and ready event.
+    const eventFiles = readdirSync('./DscEvents/').filter(file => file.endsWith('.js'));
+    for (const file of eventFiles) {
+        const eventName = file.split('.')[0];
+        logger.log(`Loading Discord Event: ${eventName}. `, 'log');
+        const event = require(`./DscEvents/${file}`);
+        // Bind the client to any event, before the existing arguments
+        // provided by the discord.js event.
+        // This line is awesome by the way. Just sayin'.
+        client.on(eventName, event.bind(null, client));
+    }
+
+    // --- NEW: Add the interaction handler and ready event ---
+    // This event handler is critical for all slash commands.
+    client.on(Events.InteractionCreate, async interaction => {
+        // If the interaction isn't a slash command, do nothing.
+        if (!interaction.isChatInputCommand()) return;
+
+        const command = client.container.slashcmds.get(interaction.commandName);
+        if (!command) return;
+
+        try {
+            await command.execute(interaction);
+        } catch (error) {
+            console.error(error);
+            if (interaction.replied || interaction.deferred) {
+                await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
+            } else {
+                await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
+            }
+        }
+    });
+
+    // This logs a message to the console once the bot has successfully logged in.
+    client.once(Events.ClientReady, c => {
+        console.log(`Ready! Logged in as ${c.user.tag}`);
+    });
+    
+    // This adds an error listener
+    client.on('error', (err) => {
+        console.error('Discord.js Error:', err);
+    });
 
 
-	// Now we load any **slash** commands you may have in the ./slash directory.
-	const slashFiles = readdirSync('./DscSlash').filter(file => file.endsWith('.js'));
-	for (const file of slashFiles) {
-		const command = require(`./DscSlash/${file}`);
-		const commandName = file.split('.')[0];
-		logger.log(`Loading Slash command: ${commandName}. `, 'log');
-
-		// Now set the name of the command with it's properties.
-		client.container.slashcmds.set(command.commandData.name, command);
-	}
-
-	// Then we load events, which will include our message and ready event.
-	const eventFiles = readdirSync('./DscEvents/').filter(file => file.endsWith('.js'));
-	for (const file of eventFiles) {
-		const eventName = file.split('.')[0];
-		logger.log(`Loading Discord Event: ${eventName}. `, 'log');
-		const event = require(`./DscEvents/${file}`);
-		// Bind the client to any event, before the existing arguments
-		// provided by the discord.js event.
-		// This line is awesome by the way. Just sayin'.
-		client.on(eventName, event.bind(null, client));
-	}
-
-
-	// Here we login the client.
-	client.login();
+    // Here we login the client.
+    client.login();
 
 
 // End top-level async/await function.

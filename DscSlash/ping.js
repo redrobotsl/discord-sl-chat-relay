@@ -1,19 +1,14 @@
-exports.run = async (client, interaction) => { // eslint-disable-line no-unused-vars
-  await interaction.deferReply();
-  const reply = await interaction.editReply("Ping?");
-  await interaction.editReply(`Pong! Latency is ${reply.createdTimestamp - interaction.createdTimestamp}ms. API Latency is ${Math.round(client.ws.ping)}ms.`);
-};
+const { SlashCommandBuilder } = require("discord.js");
 
-exports.commandData = {
-  name: "ping",
-  description: "Pongs when pinged.",
-  options: [],
-  defaultPermission: true,
-};
-
-// Set guildOnly to true if you want it to be available on guilds only.
-// Otherwise false is global.
-exports.conf = {
-  permLevel: "User",
-  guildOnly: false
+module.exports = {
+  data: new SlashCommandBuilder()
+    .setName("ping")
+    .setDescription("Pongs when pinged."),
+  async execute(interaction) {
+    const botPing = Date.now() - interaction.createdTimestamp;
+    await interaction.reply({
+      content: `Pong! Latency is **${botPing}ms**. API Latency is **${Math.round(interaction.client.ws.ping)}ms**.`,
+      ephemeral: true,
+    });
+  },
 };
