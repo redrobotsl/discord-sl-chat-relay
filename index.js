@@ -135,6 +135,7 @@ const init = async () => {
 
     // This logs a message to the console once the bot has successfully logged in.
     client.once(Events.ClientReady, c => {
+        const packageinfo = require("./package.json"); 
         const dversion = packageinfo.version;
         const name = packageinfo.name;
         console.log(`Ready! Logged in as ${c.user.tag}`);
