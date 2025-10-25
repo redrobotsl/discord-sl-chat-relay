@@ -179,7 +179,7 @@ A Discord and Second Life bot capable of relaying messages between inworld Secon
 
 ## Roadmap
 
-- [ ] Add Region Restart Evasion with Fallback Regions in the Config File
+- [x] Add Region Restart Evasion with Fallback Regions in the Config File
 	* On Region Restart notice, teleport to a fallback region, as well as on login, if can't login to the main region, teleport to a fallback region, don't want your bots sticking around somewhere you don't want it
 - [ ] Add Reload Capability of SL and Discord Commands/Event files.
 

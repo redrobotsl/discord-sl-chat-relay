@@ -17,6 +17,18 @@ module.exports = {
 
   async execute(interaction) {
     const duration = durationFormatter.format(interaction.client.uptime);
+    
+    // Get region restart handler status
+    const regionRestartHandler = interaction.client.container.regionRestartHandler;
+    let currentLocation = 'Unknown';
+    let evacuationStatus = 'Unknown';
+    
+    if (regionRestartHandler) {
+      const status = regionRestartHandler.getStatus();
+      currentLocation = status.currentRegion || 'Unknown';
+      evacuationStatus = status.isEvacuating ? '🚨 Evacuating Region Restarts' : '✅ Normal';
+    }
+    
     const statsEmbed = new EmbedBuilder()
       .setColor('#0099ff')
       .setTitle('STATISTICS')
@@ -29,6 +41,8 @@ module.exports = {
         { name: 'Discord.js', value: `v${version}`, inline: true },
         { name: 'Node.js', value: process.version, inline: true },
         { name: 'Bot Version', value: `v${dversion}`, inline: true },
+        { name: 'Current Region', value: currentLocation, inline: true },
+        { name: 'Restarts Evacuation Status', value: evacuationStatus, inline: true },
       )
       .setTimestamp();
 

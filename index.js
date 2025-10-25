@@ -13,6 +13,7 @@ const { readdirSync } = require('fs');
 const { intents, partials, permLevels } = require('./config.js');
 const config = require('./config.js');
 const logger = require('./modules/Logger.js');
+const RegionRestartHandler = require('./modules/RegionRestartHandler.js');
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're referring to. Your client.
@@ -46,8 +47,11 @@ client.container = {
     nmv,
 };
 
+// Initialize Region Restart Handler
+const regionRestartHandler = new RegionRestartHandler(client);
+client.container.regionRestartHandler = regionRestartHandler;
+
 const GroupChatEventHandler = require('./SLevents/GroupChat.js');
-const ChatEventHandler = require('./SLevents/ChatEvent.js');
 
 // We're doing real fancy node 8 async/await stuff here, and to do that
 // we need to wrap stuff in an anonymous function. It's annoying but it works.
@@ -62,6 +66,22 @@ const init = async () => {
         return client.container.SLbot.connectToSim();
     }).then(() => {
         logger.log('SL: Connected to Region', 'log');
+        
+        // Set startup location for region restart handler
+        const startLocation = process.env.SL_START;
+        if (startLocation && startLocation !== 'last') {
+            // Parse URI format: uri:RegionName&x&y&z
+            const uriMatch = startLocation.match(/uri:([^&]+)&(\d+)&(\d+)&(\d+)/);
+            if (uriMatch) {
+                const region = decodeURIComponent(uriMatch[1]);
+                const x = parseInt(uriMatch[2], 10);
+                const y = parseInt(uriMatch[3], 10);
+                const z = parseInt(uriMatch[4], 10);
+                regionRestartHandler.setStartupLocation(region, x, y, z);
+            }
+        } else {
+            logger.log('SL: Startup location set to default, will update region restart handler when region info is available', 'log');
+        }
 
 
     }).then(async () => {
