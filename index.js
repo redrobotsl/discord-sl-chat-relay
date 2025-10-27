@@ -134,27 +134,6 @@ const init = async () => {
         client.on(eventName, event.bind(null, client));
     }
 
-    // --- NEW: Add the interaction handler and ready event ---
-    // This event handler is critical for all slash commands.
-    client.on(Events.InteractionCreate, async interaction => {
-        // If the interaction isn't a slash command, do nothing.
-        if (!interaction.isChatInputCommand()) return;
-
-        const command = client.container.slashcmds.get(interaction.commandName);
-        if (!command) return;
-
-        try {
-            await command.execute(interaction);
-        } catch (error) {
-            console.error(error);
-            if (interaction.replied || interaction.deferred) {
-                await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
-            } else {
-                await interaction.reply({ content: 'There was an error while executing this command!', ephemeral: true });
-            }
-        }
-    });
-
     // This logs a message to the console once the bot has successfully logged in.
     client.once(Events.ClientReady, c => {
         console.log(`Ready! Logged in as ${c.user.tag}`);
