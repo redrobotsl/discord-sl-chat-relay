@@ -17,7 +17,7 @@ const RegionRestartHandler = require('./modules/RegionRestartHandler.js');
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're referring to. Your client.
-const packageinfo = require("../package.json");
+const packageinfo = require("./package.json");
 const client = new Client({ intents, partials });
 
 
