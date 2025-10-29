@@ -19,8 +19,6 @@ const RegionRestartHandler = require('./modules/RegionRestartHandler.js');
 // or `bot.something`, this is what we're referring to. Your client.
 const packageinfo = require("./package.json");
 const client = new Client({ intents, partials });
-
-
 const slashcmds = new Collection();
 
 const { UUID } = nmv;
