@@ -36,7 +36,8 @@ module.exports = async (client, GroupChatEvent) => {
       let webhook = webhooks.find(wh => wh.token);
       // If there is no webhook, create one, use a default image for it. 
       if (!webhook) {
-        webhook = await channel.createWebhook('RelayBot', {
+        webhook = await channel.createWebhook({
+          name: "RelayBot",
           avatar: 'https://i.imgur.com/AfFp7pu.png',
         });
         console.log(`Created webhook ${webhook}`);
