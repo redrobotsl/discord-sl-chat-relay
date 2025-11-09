@@ -7,10 +7,25 @@ const config = {
 
 	// Bot Support, level 8 by default. Array of user ID strings
 	'support': [],
-	// To be implemented, fallback regions if the .env main region can't be reached.
+	// Fallback regions configuration for region restart scenarios
+	// Format: ['region-name', 'uri:RegionName&x&y&z']
 	fallbackRegions: new Map([
-		['regioname', 'uri'],
+		['sandbox', 'uri:Sandbox%20Island&128&128&25'],
+		['help', 'uri:Help%20Island%20Public&128&128&25'],
+		['welcome', 'uri:Welcome%20Center&128&128&25']
 	]),
+
+	// Region restart evasion settings
+	regionRestartSettings: {
+		// Enable automatic teleportation on region restart alerts
+		enabled: true,
+		// Time to wait between teleport attempts (seconds or minutes)
+		teleportRetryDelay: "30s",
+		// Time to wait before trying to return to startup location (seconds or minutes)
+		returnToStartupDelay: "5m",
+		// Maximum number of teleport attempts per location
+		maxTeleportAttempts: 3
+	},
 
 	// //// This maps inworld group UUIDs to Discord Channels.
 	relays: new Map([
