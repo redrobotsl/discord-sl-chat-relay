@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require("discord.js");
-
+const logger = require("../modules/Logger.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("reboot")
@@ -12,8 +12,8 @@ module.exports = {
       await interaction.client.container.SLbot.close();
     } catch (error) {
       // Assuming logger is defined elsewhere
-      logger.log(`SL: Error when logging out client`, "error");
-      logger.log(error, "error");
+      logger.error(`SL: Error when logging out client`, "error");
+      logger.error(error, "error");
     }
     
     process.exit(0);

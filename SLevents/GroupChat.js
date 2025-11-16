@@ -1,7 +1,7 @@
 const config = require('../config.js');
 const axios = require('axios').default;
 const nmv = require('@caspertech/node-metaverse');
-
+const logger = require('../modules/Logger.js');
 const { UUID } = nmv;
 
 module.exports = async (client, GroupChatEvent) => {
@@ -26,7 +26,7 @@ module.exports = async (client, GroupChatEvent) => {
         const match = profile.data.match(/<meta name="imageid" content="([^"]+)"/);
         if (match) img = match[1];
       } catch (error) {
-        console.error("Failed fetching profile image:", error.message);
+        logger.error("Failed fetching profile image:", error.message);
       }
 
       const channel = client.channels.cache.get(config.relays.get(GroupChatEvent.groupID.toString()));
@@ -36,10 +36,11 @@ module.exports = async (client, GroupChatEvent) => {
       let webhook = webhooks.find(wh => wh.token);
       // If there is no webhook, create one, use a default image for it. 
       if (!webhook) {
-        webhook = await channel.createWebhook('RelayBot', {
+        webhook = await channel.createWebhook({
+          name: 'relay-bot',
           avatar: 'https://i.imgur.com/AfFp7pu.png',
         });
-        console.log(`Created webhook ${webhook}`);
+        logger.info(`Created webhook`);
       }
       // Attempt to send the message that came from inworld  via the webhoo, and if there is a image, guess we can use a profile image.
       // TODO: Create configuration settings maybe for if it's a OpenSimulator Bot, it'll default to something, since obviously the SL Image Service wouldn't be available.
@@ -52,7 +53,7 @@ module.exports = async (client, GroupChatEvent) => {
 
     } catch (error) {
       // Note the error, and dump.
-      console.error('Failed to relay to Discord:', error.message);
+      logger.error('Failed to relay to Discord:', error.message);
     }
   }
 };

@@ -2,7 +2,7 @@ const logger = require("../modules/Logger.js");
 // This event executes when a new guild (server) is joined.
 
 module.exports = (client, guild) => {
-  logger.log(`[GUILD JOIN] ${guild.id} added the bot. Owner: ${guild.ownerId}`);
+  logger.info(`[GUILD JOIN] ${guild.id} added the bot. Owner: ${guild.ownerId}`);
    // We'll partition the slash commands based on the guildOnly boolean.
   // Separating them into the correct objects defined in the array below.
   const [globalCmds, guildCmds] = client.container.slashcmds.partition(c => !c.conf.guildOnly);

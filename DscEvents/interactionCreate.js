@@ -15,7 +15,7 @@ module.exports = async (client, interaction) => {
 
   try {
     await cmd.execute(interaction);
-    logger.log(`${config.permLevels.find(l => l.level === level).name} ${interaction.user.id} ran slash command ${interaction.commandName}`, "cmd");
+    logger.info(`${config.permLevels.find(l => l.level === level).name} ${interaction.user.id} ran slash command ${interaction.commandName}`, "cmd");
 
   } catch (e) {
     console.error(e);

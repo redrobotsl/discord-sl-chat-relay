@@ -4,6 +4,43 @@
 if (Number(process.version.slice(1).split('.')[0]) < 16) throw new Error('Node 16.x or higher is required. Update Node on your system.');
 require('dotenv').config();
 
+const originalConsoleLog = console.log; // do not remove this line
+// Override console.log
+console.log = function (...args) {
+    // Log using signale
+    logger.info(...args);
+  //  originalConsoleLog.apply(console, args); // uncomment this line if you want to keep original logging as well
+};
+const originalConsoleWarn = console.warn; // do not remove this line
+// Override console.warn
+console.warn = function (...args) {
+    // Log using signale
+    logger.warn(...args);
+  //  originalConsoleWarn.apply(console, args); // uncomment this line if you want to keep original warning logging as well
+};
+const originalConsoleError = console.error; //` do not remove this line 
+
+// Override console.error
+console.error = function (...args) {
+    // Log using signale
+    signale.error(...args);
+
+  //  originalConsoleError.apply(console, args); // uncomment this line if you want to keep original error logging as well
+};
+const  originalConsoleDebug = console.debug; // do not remove this line
+// Override console.debug
+console.debug = function (...args) {
+    // Log using signale
+    logger.debug(...args);
+  //  originalConsoleDebug.apply(console, args); // uncomment this line if you want to keep original debug logging as well
+};
+const originalConsoleInfo = console.info; // do not remove this line            
+// Override console.info
+console.info = function (...args) {
+    // Log using signale
+    logger.info(...args);
+  //  originalConsoleInfo.apply(console, args); // uncomment this line if you want to keep original info logging as well
+};
 // Load up the discord.js library
 const { Client, Collection, Events } = require('discord.js');
 // Load Node Meta
@@ -13,10 +50,12 @@ const { readdirSync } = require('fs');
 const { intents, partials, permLevels } = require('./config.js');
 const config = require('./config.js');
 const logger = require('./modules/Logger.js');
+const signale = require('signale');
+
 // This is your client. Some people call it `bot`, some people call it `self`,
 // some might call it `cootchie`. Either way, when you see `client.something`,
 // or `bot.something`, this is what we're referring to. Your client.
-const packageinfo = require("./package.json");
+//const packageinfo = require("./package.json");
 const client = new Client({ intents, partials });
 const slashcmds = new Collection();
 
@@ -44,7 +83,6 @@ client.container = {
     SLbot,
     nmv,
 };
-
 const GroupChatEventHandler = require('./SLevents/GroupChat.js');
 const ChatEventHandler = require('./SLevents/ChatEvent.js');
 
@@ -55,12 +93,12 @@ const init = async () => {
 
 
     client.container.SLbot.login().then((response) => {
-        logger.log('SL: Login Complete', 'log');
+        logger.success('SL: Login Complete');
 
         // Establish circuit with region
         return client.container.SLbot.connectToSim();
     }).then(() => {
-        logger.log('SL: Connected to Region', 'log');
+        logger.success('SL: Connected to Region');
 
 
     }).then(async () => {
@@ -89,14 +127,14 @@ const init = async () => {
     for (const file of slashFiles) {
         const command = require(`./DscSlash/${file}`);
         const commandName = file.split('.')[0];
-        logger.log(`Loading Slash command: ${commandName}. `, 'log');
+        logger.success(`Loading Slash command: ${commandName}. `);
 
         // This is the corrected way to load modern commands.
         // It now checks for the correct 'data' and 'execute' properties.
         if ('data' in command && 'execute' in command) {
             client.container.slashcmds.set(command.data.name, command);
         } else {
-            logger.log(`[WARNING] The command at ${commandName}.js is missing a required "data" or "execute" property.`, 'error');
+            logger.error(`[WARNING] The command at ${commandName}.js is missing a required "data" or "execute" property.`, 'error');
         }
     }
 
@@ -104,7 +142,7 @@ const init = async () => {
     const eventFiles = readdirSync('./DscEvents/').filter(file => file.endsWith('.js'));
     for (const file of eventFiles) {
         const eventName = file.split('.')[0];
-        logger.log(`Loading Discord Event: ${eventName}. `, 'log');
+        logger.success(`Loading Discord Event: ${eventName}. `);
         const event = require(`./DscEvents/${file}`);
         // Bind the client to any event, before the existing arguments
         // provided by the discord.js event.
@@ -138,12 +176,12 @@ const init = async () => {
         const packageinfo = require("./package.json"); 
         const dversion = packageinfo.version;
         const name = packageinfo.name;
-        console.log(`Ready! Logged in as ${c.user.tag}`);
-        logger.log(`package name: ${name}`);
-        logger.log(`package version: ${dversion}`);
+        logger.success(`Ready! Logged in as ${c.user.tag}`);
+        logger.success(`package name: ${name}`);
+        logger.success(`package version: ${dversion}`);
     const pkg = require('./package.json');
         Object.entries(pkg.dependencies || {}).forEach(([dep, ver]) => {
-            logger.log(`dependency: ${dep}@${ver}`);
+            logger.success(`dependency: ${dep}@${ver}`);
         });
 
 
@@ -156,9 +194,15 @@ const init = async () => {
 
 
     // Here we login the client.
-    client.login();
-
-
+    client.login().catch(error => {
+     if (error.message.includes('disallowed intents')) {
+        logger.fatal(new Error('Make sure \x1b[1mALL\x1b[0m privileged intents are enabled in the Discord Developer Portal.'));
+        logger.fatal(new Error('The bot will \x1b[1mNOT\x1b[0m work as intended.'));
+        process.exit(1);
+        } else {
+            // eventually handle other errors here  
+        }
+    });
 // End top-level async/await function.
 };
 

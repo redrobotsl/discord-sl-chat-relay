@@ -1,27 +1,39 @@
-/*
-Logger class for easy and aesthetically pleasing console logging 
-*/
-const { cyan, red, magenta, gray, yellow, white, green } = require("colorette");
-const { Timestamp } = require("@sapphire/time-utilities");
+const { Signale } = require('signale');
 
-exports.log = (content, type = "log") => {
-  const timestamp = `[${cyan(new Timestamp("YYYY-MM-DD HH:mm:ss"))}]:`;
-  
-  switch (type) {
-    case "log": return console.log(`${timestamp} ${gray(type.toUpperCase())} ${content} `);
-    case "warn": return console.log(`${timestamp} ${yellow(type.toUpperCase())} ${content} `);
-    case "error": return console.log(`${timestamp} ${red(type.toUpperCase())} ${content} `);
-    case "debug": return console.log(`${timestamp} ${magenta(type.toUpperCase())} ${content} `);
-    case "cmd": return console.log(`${timestamp} ${white(type.toUpperCase())} ${content}`);
-    case "ready": return console.log(`${timestamp} ${green(type.toUpperCase())} ${content}`);
-    default: throw new TypeError("Logger type must be either warn, debug, log, ready, cmd or error.");
-  }
-}; 
+// Define custom configuration for the logger
+// The rest of the options can be set in package.json if desired. 
+const options = {
+  types: {
+    success: {
+      badge: '✔',
+      color: 'green',
+      label: 'success',
+    },
+    error: {
+      badge: '✖',
+      color: 'red',
+      label: 'error',
+    },
+    warn: {
+      badge: '⚠',
+      color: 'yellow',
+      label: 'warn',
+    },
+    info: {
+      badge: 'ℹ',
+      color: 'cyan',
+      label: 'info',
+    },
+    debug: {
+      badge: '🐛',
+      color: 'magenta',
+      label: 'debug',
+    },
+  },
+};
 
-exports.error = (...args) => this.log(...args, "error");
+// Create a new Signale instance with the custom configuration
+const logger = new Signale({ types: options.types });
 
-exports.warn = (...args) => this.log(...args, "warn");
-
-exports.debug = (...args) => this.log(...args, "debug");
-
-exports.cmd = (...args) => this.log(...args, "cmd");
+// Export the logger for use in other files
+module.exports = logger;
