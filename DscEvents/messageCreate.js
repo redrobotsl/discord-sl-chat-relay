@@ -32,15 +32,25 @@ module.exports = async (client, message) => {
       // Oh boi it is. 
         if (value === message.channel.id) {
 
-         // console.debug("Discord Channel ID: " + message.channel.id + " maps to SL Group UUID: " + key + " " + typeof key + typeof message.channel.id);
-          const groupID = new nmv.UUID(key);
-          // Start a group chat session - equivalent to opening a group chat but not sending a message
-          await container.SLbot.clientCommands.comms.startGroupChatSession(groupID, '');
-          let guild = client.guilds.fetch(message.guild.id);
-          const member = await message.guild.members.fetch(message.author);
-          let nickname = member ? member.displayName : null;
-          // Send a group message
-          await container.SLbot.clientCommands.comms.sendGroupMessage(groupID, 'From Discord: ' + nickname + ': ' + message.content);
+          // Check if SL bot is connected and ready before trying to use it
+          if (!container.SLbot || !container.SLbot.clientCommands) {
+            logger.log('SL bot not ready yet, skipping message relay', 'warn');
+            return;
+          }
+
+          try {
+            // console.debug("Discord Channel ID: " + message.channel.id + " maps to SL Group UUID: " + key + " " + typeof key + typeof message.channel.id);
+            const groupID = new nmv.UUID(key);
+            // Start a group chat session - equivalent to opening a group chat but not sending a message
+            await container.SLbot.clientCommands.comms.startGroupChatSession(groupID, '');
+            let guild = client.guilds.fetch(message.guild.id);
+            const member = await message.guild.members.fetch(message.author);
+            let nickname = member ? member.displayName : null;
+            // Send a group message
+            await container.SLbot.clientCommands.comms.sendGroupMessage(groupID, 'From Discord: ' + nickname + ': ' + message.content);
+          } catch (error) {
+            logger.log(`Failed to relay message to SL: ${error.message}`, 'error');
+          }
         }
 
       })

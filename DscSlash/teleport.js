@@ -46,6 +46,12 @@ module.exports = {
             const position = new Vector3(loc.x, loc.y, loc.z);
             const lookAt = position;
             await interaction.client.container.SLbot.clientCommands.teleport.teleportTo(loc.region, position, lookAt);
+            
+            const regionRestartHandler = interaction.client.container.regionRestartHandler;
+            if (regionRestartHandler) {
+                regionRestartHandler.currentRegion = loc.region;
+            }
+            
             await interaction.followUp(`Teleport successful to ${loc.region} (${loc.x}, ${loc.y}, ${loc.z})`);
         } catch (err) {
             await interaction.followUp(`Teleport failed: ${err.message}`);
