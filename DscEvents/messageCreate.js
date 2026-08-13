@@ -1,5 +1,6 @@
 const logger = require("../modules/Logger.js");
 const {  permlevel } = require("../modules/functions.js");
+const { buildRelayContent } = require('../modules/DiscordMessage.js');
 const config = require("../config.js");
 const nmv = require('@caspertech/node-metaverse');
 
@@ -39,8 +40,9 @@ module.exports = async (client, message) => {
           let guild = client.guilds.fetch(message.guild.id);
           const member = await message.guild.members.fetch(message.author);
           let nickname = member ? member.displayName : null;
+          const relayContent = buildRelayContent(message);
           // Send a group message
-          await container.SLbot.clientCommands.comms.sendGroupMessage(groupID, 'From Discord: ' + nickname + ': ' + message.content);
+          await container.SLbot.clientCommands.comms.sendGroupMessage(groupID, 'From Discord: ' + nickname + ': ' + relayContent);
         }
 
       })

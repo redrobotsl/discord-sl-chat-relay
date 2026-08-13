@@ -4,7 +4,8 @@
   "description": "Second Life and Discord Chat Relay, able to handle multiple groups and channels. ",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test/DiscordMessage.test.js"
   },
   "engines": {
     "node": ">=16"
